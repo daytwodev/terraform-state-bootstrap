@@ -1,0 +1,4 @@
+terraform-state-bootstrap
+Copyright 2026 Ricardo Arguello
+
+Generic bootstrap/destroy of an S3 bucket used as a Terraform state backend.

@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  shellcheck:
+    name: Shell
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Syntax check
+        run: bash -n bootstrap.sh
+      - name: Lint (shellcheck)
+        run: shellcheck bootstrap.sh
+      - name: Help runs
+        run: ./bootstrap.sh help
