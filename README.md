@@ -44,6 +44,10 @@ terraform {
 
 No DynamoDB needed: `use_lockfile` uses S3 native locking.
 
+`create` also prints a ready-to-use `backend.hcl` with the real bucket name,
+so you can run `terraform init -backend-config=backend.hcl` instead of
+hardcoding the backend.
+
 ## Delete
 
 ```bash

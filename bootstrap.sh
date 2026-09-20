@@ -192,19 +192,27 @@ create_bucket() {
 
 [bootstrap] Done. Bucket: ${BUCKET}
 
-Backend for Terraform:
+Save this as backend.hcl next to your Terraform root (adjust "key" if you
+have more than one root), then:  terraform init -backend-config=backend.hcl
+
+  bucket       = "${BUCKET}"
+  key          = "terraform.tfstate"
+  region       = "${REGION}"
+  use_lockfile = true
+
+Or hardcode it in the root:
 
   terraform {
     backend "s3" {
       bucket       = "${BUCKET}"
-      key          = "<root>/terraform.tfstate"
+      key          = "terraform.tfstate"
       region       = "${REGION}"
       use_lockfile = true
     }
   }
 
-Note: if you use a dedicated bucket per project, keep this name in the backend
-of your roots. To remove it:  ./bootstrap.sh destroy --bucket ${BUCKET}
+Keep this bucket name. To remove it:
+  ./bootstrap.sh destroy --bucket ${BUCKET}
 EOF
 }
 
