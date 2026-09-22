@@ -30,3 +30,10 @@ shellcheck bootstrap.sh
   purge **all** object versions and delete markers before deleting the bucket.
 - Never print or log credentials; call the AWS CLI as-is.
 - Keep `--dry-run` printing the real, copy-pasteable `aws` commands.
+
+## Status
+
+Stable utility, used to create/delete a central Terraform state bucket. Keep it
+generic: no account-specific values (bucket names, account IDs) belong in the
+repo.
+
